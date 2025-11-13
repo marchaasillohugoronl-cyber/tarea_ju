@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <h1>Ejercicio 1</h1>
+        <hr>
+        <select id="cbxdia">
+            <option value="0">Seleccione</option>
+            <option value="1">Lunes</option>
+            <option value="2">Martes</option>
+            <option value="3">Miércoles</option>
+            <option value="4">Jueves</option>
+            <option value="5">Viernes</option>
+        </select>
+        <button id="btnprocesar">Generar Horario</button>
+        <div style="background-color: yellow;" id="res">
+            Respuesta
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $('#btnprocesar').click(function(){
+        //PETICIÓN ASÍNCRONA
+        dia= $('#cbxdia').val();
+        console.log(dia);
+        param={'dia':dia}
+
+        $.ajax({
+            url:'ejercicio2.php',
+            type:'get',
+            data: param,
+            success: function(res){
+                //console.log(res)
+                //document.getElementById('res').innerHTML=res;
+                $('#res').html(res); 
+            }
+        })
+    });
+</script>
